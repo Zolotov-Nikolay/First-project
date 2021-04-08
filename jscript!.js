@@ -311,13 +311,13 @@
 // }
 // console.log(counter);
 
-const arr = [1230, 21, 23, 8, 63, 81, 6];
-arr.sort(compareNum);
-console.log(arr);
+// const arr = [1230, 21, 23, 8, 63, 81, 6];
+// arr.sort(compareNum);
+// console.log(arr);
 
-function compareNum(a, b) {
-    return a - b;
-}
+// function compareNum(a, b) {
+//     return a - b;
+// }
 
 // arr[99] = 0;
 // console.log(arr.length);
@@ -365,42 +365,42 @@ function compareNum(a, b) {
 // console.log(copy);
 // console.log(obj);
 
-function copy(mainObj) {
-    let objCopy = {};
+// function copy(mainObj) {
+//     let objCopy = {};
 
-    let key;
-    for (key in mainObj) {
-        objCopy[key] = mainObj[key];
-    }
+//     let key;
+//     for (key in mainObj) {
+//         objCopy[key] = mainObj[key];
+//     }
 
-    return objCopy;
-}
+//     return objCopy;
+// }
 
-const numbers = {
-    a: 2,
-    b: 5,
-    c : {
-        x: 7,
-        y: 4
-    }
-};
+// const numbers = {
+//     a: 2,
+//     b: 5,
+//     c : {
+//         x: 7,
+//         y: 4
+//     }
+// };
 
-const newNumbers = copy(numbers);
+// const newNumbers = copy(numbers);
 
-newNumbers.a = 10;
-newNumbers.c.x = 10;
+// newNumbers.a = 10;
+// newNumbers.c.x = 10;
 
-console.log(newNumbers);
-console.log(numbers);
+// console.log(newNumbers);
+// console.log(numbers);
 
-const add = {
-    d: 17,
-    e: 20
-};
+// const add = {
+//     d: 17,
+//     e: 20
+// };
 
-const clone = Object.assign({}, add);
+// const clone = Object.assign({}, add);
 
-clone.d = 20;
+// clone.d = 20;
 
 // console.log(add);
 // console.log(clone);
@@ -412,31 +412,139 @@ clone.d = 20;
 // console.log(newArray);
 // console.log(oldArray);
 
-const video = ['youtube', 'vimeo', 'rutube'],
-      blogs = ['wordpress', 'livejournal', 'blogger'],
-      internet = [...video, ...blogs, 'vk', 'facebook'];
+// const video = ['youtube', 'vimeo', 'rutube'],
+//       blogs = ['wordpress', 'livejournal', 'blogger'],
+//       internet = [...video, ...blogs, 'vk', 'facebook'];
 
-console.log(internet);
+// console.log(internet);
 
-function log(a, b, c) {
-    console.log(a);
-    console.log(b);
-    console.log(c);
-}
+// function log(a, b, c) {
+//     console.log(a);
+//     console.log(b);
+//     console.log(c);
+// }
 
-const num = [2, 5, 7];
+// const num = [2, 5, 7];
 
-log(...num);
+// log(...num);
 
-const array = ["a", "b"];
+// const array = ["a", "b"];
 
-const newAarray = [...array];
+// const newAarray = [...array];
 
-const q = {
-    one: 1,
-    two: 2
+// const q = {
+//     one: 1,
+//     two: 2
+// };
+
+// const newObj = {...q};
+
+// console.log(newObj);
+
+// let str = "some";
+// let strObj = new String(str);
+
+// console.log(typeof(str));
+// console.log(typeof(strObj));
+
+//console.dir([1,2,3]);
+
+// const soldier = {
+//     health: 400,
+//     armor: 100,
+//     sayHello: function() {
+//         console.log('Hello');
+//     }
+// };
+
+// const john = Object.create(soldier);
+
+// const john = {
+//     health: 100
+// };
+
+// Object.setPrototypeOf(john, soldier);
+// console.log(john.armor);
+// john.sayHello();
+
+// const numberOfFilms = {};
+
+// function start() {
+//     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+//         numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+//     }
+// }
+// start();
+
+const personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+    start: function() {
+        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
+        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+
+},
+    rememberMyFilms: function() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt ('Один из последних просмотренных фильмов?', ''),
+              b = prompt ('На сколько оцените его?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+},
+    detectPersonalLevel: function() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотрено довольно мало фильмов!');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log('Вы классический зритель!');
+    } else if (personalMovieDB.count > 30) {
+        console.log('Вы настоящий кинмоман!');
+    } else {
+        console.log('Произошла ошибка!');
+    }
+},
+    showMyDB: function(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+},
+    toggleVisibleMyDB: function() {
+    if(personalMovieDB.privat) {
+        personalMovieDB.preivat = false;
+    } else {
+        personalMovieDB.privat = true;
+    }
+},
+    writeYourGenres: function() {
+    for (let i = 1; i <= 3; i++) {
+        let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+
+        if (genre === '' || genre === null) {
+            console.log('Вы ввели некорректные данные или не ввели их вовсе');
+            i--;
+        } else {
+            personalMovieDB.genres[i - 1] = genre;
+        }
+
+        // personalMovieDB.genres[i - 1] = genre;
+        // personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`); можно записывать так
+    }
+    personalMovieDB.genres.forEach((item, i) => {
+        console.log(`Любимый жанр ${i + 1} - это ${item}`);
+        });
+    }
 };
-
-const newObj = {...q};
-
-console.log(newObj);
